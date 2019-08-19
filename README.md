@@ -9,8 +9,8 @@ This is an implementation of the attenuation map synthesis algorithm described i
 
 Network was trained with a very small amount of images.
 
-Trainable parameters of the discriminator: 462,721
+Trainable parameters of the discriminator: 462,721.
 
-Trainable parameters of the generator: 3,833,713
+Trainable parameters of the generator: 3,833,713.
 
 
