@@ -18,20 +18,11 @@ import numpy as np
 
 class SPECTGan():
     def __init__(self):
-        # Input shape
-        self.img_rows = 28
-        self.img_cols = 28
-        self.channels = 1
-        self.img_shape = (self.img_rows, self.img_cols, self.channels)
-        self.latent_dim = 100
-
         optimizer = Adam(0.0002, 0.5)
 
         # Build and compile the discriminator
         self.discriminator = self.build_discriminator()
-        self.discriminator.compile(loss='binary_crossentropy',
-            optimizer=optimizer,
-            metrics=['accuracy'])
+        self.discriminator.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
         # Build the generator
         self.generator = build_generator()
@@ -42,11 +33,9 @@ class SPECTGan():
         img_scatter = Input(shape=(256, 256, 1))
         img_syn = self.generator([img_photo, img_scatter])
 
-        # For the combined model we will only train the generator
+        # only train the generator in combined model
         self.discriminator.trainable = False
-        #self.discriminator.compile(loss='binary_crossentropy',
-         #                          optimizer=optimizer,
-          #                         metrics=['accuracy'])
+
         # The discriminator takes generated images as input and determines validity
         valid = self.discriminator(img_syn)
 
@@ -55,19 +44,20 @@ class SPECTGan():
         self.combined = Model([img_photo, img_scatter], valid)
         self.combined.compile(loss='binary_crossentropy', optimizer=optimizer)
 
+        # Input and Output folders
         self.output_path = '/netscratch/jchen/SPECT_CT_Syn/outputs/'
         self.output_image_path = self.output_path + 'images'
-        #self.input_path = '/netscratch/jchen/SPECTimg_sep_slice/'
         self.input_path = '/netscratch/jchen/spect_recon_data/imgs_sc/'
-        #plot_model(self.combined, to_file=self.output_path+'SPECT_syn.png', show_shapes=True, show_layer_names=True)
-        #sys.exit(0)
 
 
     def build_discriminator(self):
+        # ---------------------
+        #  Discriminator
+        # ---------------------
 
-        input_spect = Input((256, 256, 1))
+        input_img = Input((256, 256, 1))
 
-        conv0 = Conv2D(32, kernel_size=3, strides=2, padding="same")(input_spect)
+        conv0 = Conv2D(32, kernel_size=3, strides=2, padding="same")(input_img)
         conv0 = LeakyReLU(alpha=0.2)(conv0)
         conv0 = Dropout(0.25)(conv0)
 
@@ -90,7 +80,7 @@ class SPECTGan():
 
         fc4 = Dense(1, activation='sigmoid')(conv3)
 
-        model = Model(inputs=[input_spect], outputs=fc4)
+        model = Model(inputs=[input_img], outputs=fc4)
         model.summary()
 
         return model
@@ -179,7 +169,7 @@ class SPECTGan():
             imgPhoto = imgPhoto.reshape(len(imgPhoto), 256, 256, 1)
             imgScatter = imgs[:, :, 256:256 * 2, :]
             imgScatter = imgScatter.reshape(len(imgScatter), 256, 256, 1)
-            labels   = label_valid[idx]
+            labels = label_valid[idx]
             labels = labels.reshape(len(imgScatter), 256, 256, 1)
             gen_syn = self.generator.predict([imgPhoto, imgScatter])
 
