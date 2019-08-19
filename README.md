@@ -1,4 +1,4 @@
-# SPECT_CT_synthesis
+# Attenuation Map Synthesis with SPECT Images Using Generative Adversarial Networks
 
 This is an implementation of the attenuation map synthesis algorithm described in the following paper:
 
