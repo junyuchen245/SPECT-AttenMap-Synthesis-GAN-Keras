@@ -176,15 +176,10 @@ class SPECTGan():
             if n < 1:
                 for i in range(save_imgs):
                     plt.figure(num=None, figsize=(15, 6), dpi=200, facecolor='w', edgecolor='k')
-
                     plt.subplot(1, 4, 1); plt.axis('off'); plt.imshow(imgPhoto[i, :, :, 0], cmap='gray'); plt.title('photopeak image')
-
                     plt.subplot(1, 4, 2); plt.axis('off'); plt.imshow(imgScatter[i, :, :, 0], cmap='gray'); plt.title('scatter window image')
-
                     plt.subplot(1, 4, 3); plt.axis('off'); plt.imshow(labels[i, :, :, 0], cmap='gray'); plt.title('True CT')
-
                     plt.subplot(1, 4, 4); plt.axis('off'); plt.imshow(gen_syn[i, :, :, 0], cmap='gray'); plt.title('Syn CT')
-
                     output_name = 'syn.' + str(epoch) + '.'+str(i)+'.png'
                     plt.savefig(self.output_image_path+output_name)
                     plt.close()
