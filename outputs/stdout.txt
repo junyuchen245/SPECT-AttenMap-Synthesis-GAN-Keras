@@ -1,0 +1,31 @@
+Epoch: 0
+train d-loss: [2.2309732 0.29     ]
+train g-loss: 0.6569649
+val MSE score: 37.81348519153805
+Epoch: 1
+train d-loss: [0.34799004 0.83000004]
+train g-loss: 4.557158
+Epoch: 2
+train d-loss: [0.16795637 0.98      ]
+train g-loss: 6.573434
+Epoch: 3
+train d-loss: [0.11264075 0.99      ]
+train g-loss: 6.453747
+Epoch: 4
+train d-loss: [0.2734508  0.84000003]
+train g-loss: 6.7180567
+Epoch: 5
+train d-loss: [0.214187   0.91999996]
+train g-loss: 7.406073
+Epoch: 6
+train d-loss: [0.30566514 0.91999996]
+train g-loss: 6.997894
+Epoch: 7
+train d-loss: [0.10694133 1.        ]
+train g-loss: 6.42318
+Epoch: 8
+train d-loss: [0.25240853 0.9       ]
+train g-loss: 5.9621415
+Epoch: 9
+train d-loss: [0.1138062 0.99     ]
+train g-loss: 5.9747725
