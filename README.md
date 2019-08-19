@@ -6,3 +6,5 @@ This is an implementation of the attenuation map synthesis algorithm described i
 
 ## Sample results
 ![](https://github.com/junyuchen245/SPECT_CT_synthesis/blob/master/outputs/imagessyn.600.0.png)
+![](https://github.com/junyuchen245/SPECT_CT_synthesis/blob/master/outputs/imagessyn.600.1.png)
+
