@@ -13,4 +13,6 @@ Trainable parameters of the discriminator: 462,721.
 
 Trainable parameters of the generator: 3,833,713.
 
+### <a href="https://junyuchen245.github.io"> About Myself</a>
+
 
